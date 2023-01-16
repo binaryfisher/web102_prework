@@ -27,8 +27,20 @@ const gamesContainer = document.getElementById("games-container");
 
 // create a function that adds all data from the games array to the page
 function addGamesToPage(games) {
-
+    
     // loop over each item in the data
+    for (var i = 0; i < games.length; i++){      
+        var obj = games[i];
+        const newDiv = document.createElement("div");
+        newDiv.className = "game-card";
+        const newContent = `<img src="${obj["img"]}" class="game-img">
+        <p>Name: ${obj["name"]}</p>
+        <p>Description: ${obj["description"]}</p>
+        `;
+        newDiv.innerHTML = newContent;
+        var parentDiv = document.getElementById("games-container");
+        parentDiv.appendChild(newDiv);
+    }
 
 
         // create a new div element, which will become the game card
@@ -153,3 +165,5 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 // create a new element to hold the name of the top pledge game, then append it to the correct element
 
 // do the same for the runner up item
+
+addGamesToPage(GAMES_JSON);
